@@ -10,8 +10,6 @@ upstream bt {
 }
 
 server {
-        listen 443 default_server ssl;
-        listen [::]:443 default_server ipv6only=on ssl;
         listen 80 default_server;
         listen [::]:80 default_server ipv6only=on;
         server_name theblockbot.com;
