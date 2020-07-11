@@ -29,7 +29,7 @@ var config = setup.config,
     Subscription = setup.Subscription;
 
 // Maximum size of a block list that can be subscribed to.
-const maxSubscribeSize = 70000;
+const maxSubscribeSize = 250000;
 
 // Look for templates here
 mu.root = __dirname + '/templates';
@@ -129,8 +129,20 @@ function passportSuccessCallback(accessToken, accessTokenSecret, profile, done) 
       }
     }).then(function(btUser) {
       if (!btUser) {
-        done(null, undefined);
-        return;
+        return BtUser.create({
+          uid: uid,	        return;
+          screen_name: screen_name,
+          access_token: accessToken,
+          access_token_secret: accessTokenSecret,
+          shared_blocks_key: null,
+          block_new_accounts: false,
+          block_low_followers: false,
+          follow_blocktogether: false,
+          pendingActions: 0,
+          paused: false,
+          blockCount: null,
+          deactivatedAt: null
+        });
       } else {
         // The user's access token may have changed since last login, or they may
         // have been previously deactivated. Overwrite appropriate values with
@@ -298,7 +310,7 @@ app.get('/auth/twitter/callback', function(req, res, next) {
         // etc), so we call them 403's.
         return next(new HttpError(403, err.message));
       } else if (!user) {
-        return next(new HttpError(403, 'Signups turned off due to overcapacity.'));
+        return next(new HttpError(403, 'Problem during app authorization. Try again later ... '));
       } else {
         // If this was a signup (vs a log on), set settings based on what the user
         // selected on the main page.

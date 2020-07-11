@@ -98,7 +98,7 @@ async function cleanExcessActions() {
             type: sequelize.QueryTypes.DELETE
           });
       }
-      await Q.delay(500);
+      await Q.delay(1000);
     };
   }
 }

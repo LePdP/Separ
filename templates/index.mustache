@@ -7,7 +7,19 @@
     </p>
   </div>
   {{^logged_in_screen_name}}
-  <div class="signup-prompt">Note: New signups disabled due to overcapacity.</div>
+  <div class="signup-prompt">
+    <form action="/auth/twitter" method="POST">
+      <input type="hidden" name="signup" value="true" />
+      <input type="hidden" name="csrf_token" value="{{csrf_token}}" />
+      <button type="submit" class="btn btn-primary">Sign up using Twitter</button>
+    </form>
+    <br>
+    <div>
+    Block Together will not tweet on your behalf, but it needs read/write
+    access so it can block people when you ask it to. Twitter describes
+    that permission as 'Post tweets for you.'
+    </div>
+  </div>
   <div class="log-on-prompt">
     <b>Already using Block Together?</b>
     <form action="/auth/twitter" method="POST">
@@ -94,11 +106,11 @@
     <h3>Limits</h3>
     </a>
     <p>
-    The largest size of a shared block list is 70,000 accounts. If your
+    The largest size of a shared block list is 250,000 accounts. If your
     block list is larger than this, new people will not be able to subscribe to
     it. If you remove some accounts from your block list to get it below
-    70,000, people will be able to subscribe to it again. Also, your block list
-    won't be updated at all past 125,000 blocks.
+    250,000, people will be able to subscribe to it again. Also, your block list
+    won't be updated at all past 250,000 blocks.
     </p>
 
     <a name='make-it-better' href='#make-it-better'>

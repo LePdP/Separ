@@ -237,7 +237,7 @@ async function fetchAndStoreBlocks(user) {
 
   user.blockCount = size;
   await user.save()
-  if (user.shared_blocks_key != null && size != 125000) {
+  if (user.shared_blocks_key != null && size <= 250000) {
     logger.info("finalizing blocks for", user);
     return finalizeBlockBatch(blockBatch);
   } else {
