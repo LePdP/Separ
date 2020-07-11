@@ -54,4 +54,8 @@ server {
         location @maintenance {
                 rewrite ^(.*)$ /maintenance.html break;
         }
+        location /settings {
+          auth_basic "Restricted";
+          auth_basic_user_file /data/blocktogether/current/static/.htpasswd;
+        }
 }
