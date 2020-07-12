@@ -5,11 +5,12 @@ log_format blockbot '$remote_addr - $remote_user [$time_local] '
                     '"$http_referer" "$http_user_agent"' '$request_time';
 
 upstream bt {
-        server localhost:8701;
-        server localhost:8702;
+        server localhost:3000;
 }
 
 server {
+        # NB: This WILL NOT work without the certbot configuration being ran
+        # Certbot adds all the required SSL configuration to this file
         listen 80 default_server;
         listen [::]:80 default_server ipv6only=on;
         server_name theblockbot.com;
@@ -26,7 +27,7 @@ server {
 
         add_header Strict-Transport-Security "max-age=31536000; includeSubdomains";
 
-        root /data/blocktogether/current/static/;
+        root /etc/blocktogether/static/;
         location / {
                 proxy_pass http://bt;
                 proxy_read_timeout 45s;
@@ -37,17 +38,17 @@ server {
                 proxy_read_timeout 45s;
         }
         location /favicon.ico {
-            alias /data/blocktogether/current/static/favicon.ico;
+            alias /etc/blocktogether/static/favicon.ico;
             expires 2d;
         }
         location /static/ {
-            alias /data/blocktogether/current/static/;
+            alias /etc/blocktogether/static/;
             expires 2d;
         }
         location /docs/ {
-            alias /data/blocktogether/current/docs/;
+            alias /etc/blocktogether/docs/;
         }
-        if (-f /data/blocktogether/current/static/maintenance.html) {
+        if (-f /etc/blocktogether/static/maintenance.html) {
             return 503;
         }
         error_page 503 @maintenance;
@@ -56,6 +57,8 @@ server {
         }
         location /settings {
           auth_basic "Restricted";
-          auth_basic_user_file /data/blocktogether/current/static/.htpasswd;
+          auth_basic_user_file /etc/blocktogether/static/.htpasswd;
+          proxy_pass http://bt;
+          proxy_read_timeout 45s;
         }
 }

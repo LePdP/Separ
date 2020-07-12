@@ -130,7 +130,7 @@ function passportSuccessCallback(accessToken, accessTokenSecret, profile, done) 
     }).then(function(btUser) {
       if (!btUser) {
         return BtUser.create({
-          uid: uid,	        return;
+          uid: uid,
           screen_name: screen_name,
           access_token: accessToken,
           access_token_secret: accessTokenSecret,
@@ -282,7 +282,7 @@ function logInAndRedirect(req, res, next, user) {
       logger.info('Got subscribe_on_signup for', req.user, 'redirecting.');
       return res.redirect('/subscribe-on-signup');
     } else {
-      return res.redirect('/settings');
+      return res.redirect('/subscriptions');
     }
   });
 }

@@ -40,25 +40,14 @@
     "errFile": "/etc/blocktogether/deleter-stderr.log"
   },
   {
-    "uid": "blocktogether1",
+    "uid": "blocktogether",
     "append": true,
     "watch": true,
     "script": "blocktogether.js",
     "sourceDir": "/etc/blocktogether",
-    "logFile": "/etc/blocktogether/logs/blocktogether1.log",
-    "outFile": "/etc/blocktogether/logs/blocktogether1-stdout.log",
-    "errFile": "/etc/blocktogether/blocktogether1-stderr.log",
-    "args": ["--port", "8701"]
-  },
-  {
-    "uid": "blocktogether2",
-    "append": true,
-    "watch": true,
-    "script": "blocktogether.js",
-    "sourceDir": "/etc/blocktogether",
-    "logFile": "/etc/blocktogether/logs/blocktogether2.log",
-    "outFile": "/etc/blocktogether/logs/blocktogether2-stdout.log",
-    "errFile": "/etc/blocktogether/blocktogether2-stderr.log",
-    "args": ["--port", "8702"]
+    "logFile": "/etc/blocktogether/logs/blocktogether.log",
+    "outFile": "/etc/blocktogether/logs/blocktogether-stdout.log",
+    "errFile": "/etc/blocktogether/blocktogether-stderr.log",
+    "args": ["--port", "3000"]
   }
 ]

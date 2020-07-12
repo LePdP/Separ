@@ -68,7 +68,7 @@ setInterval(function() {
 }, 1000).unref();
 
 log4js.configure(path.join(configDir, nodeEnv, '/log4js.json'), {
-  cwd: '/data/blocktogether/shared/log'
+  cwd: '/etc/blocktogether/logs'
 });
 // The logging category is based on the name of the running script, e.g.
 // blocktogether, action, stream, etc.

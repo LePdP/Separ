@@ -61,7 +61,7 @@ function deleteOneOldUser(user) {
 async function processEternally() {
   while (true) {
     await findAndDeleteOneOldUser();
-    await Q.delay(1000);
+    await Q.delay(60*60*1000); // Does this need to run more than once per hour - JB?
   }
 }
 
@@ -80,7 +80,7 @@ async function cleanDuplicateAndExternalActions() {
       await Q.delay(1000);
     }
     logger.info("restarting cleanDuplicateAndExternalActions loop");
-    await Q.delay(1000);
+    await Q.delay(60*60*1000); // Does this need to run more than once per hour - JB?
   }
 }
 
@@ -98,7 +98,7 @@ async function cleanExcessActions() {
             type: sequelize.QueryTypes.DELETE
           });
       }
-      await Q.delay(1000);
+      await Q.delay(60*60*1000); // Does this need to run more than once per hour - JB?
     };
   }
 }
