@@ -8,10 +8,9 @@
   },
   "production": {
     "username": "blocktogether",
-    "password": "",
+    "password": "password",
     "database": "blocktogether",
-    "host": "btdbi.blocktogether.org",
-    "port": 15000,
+    "host": "127.0.0.1",
     "dialect": "mysql"
   }
 }
