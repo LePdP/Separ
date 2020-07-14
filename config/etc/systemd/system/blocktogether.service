@@ -1,3 +1,6 @@
+[Unit]
+After=mysql.service
+
 [Service]
 WorkingDirectory=/data/blocktogether/
 Environment="NODE_ENV=production"
