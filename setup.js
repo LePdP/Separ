@@ -19,7 +19,7 @@ const fs = require('fs'),
  *    "cookieSecret": "...",
  *  }
  */
-var configDir = process.env['BT_CONFIG_DIR'] || '/etc/blocktogether/';
+var configDir = process.env['BT_CONFIG_DIR'] || '/etc/blocktogether/config/';
 var nodeEnv = process.env['NODE_ENV'] || 'development';
 var configData = fs.readFileSync(path.join(configDir, 'config.json'), 'utf8');
 var config = JSON.parse(configData);
