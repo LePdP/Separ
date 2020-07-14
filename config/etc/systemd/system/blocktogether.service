@@ -4,7 +4,7 @@ StartLimitIntervalSec=200
 StartLimitBurst=5
 
 [Service]
-WorkingDirectory=/data/blocktogether/
+WorkingDirectory=/etc/blocktogether/
 Environment="NODE_ENV=production"
 ExecStart=/usr/bin/node blocktogether.js --port 3000
 
