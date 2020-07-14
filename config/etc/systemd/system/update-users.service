@@ -1,13 +1,12 @@
 [Service]
-WorkingDirectory=/data/blocktogether/current
+WorkingDirectory=/etc/blocktogether/
 Environment="NODE_ENV=production"
-ExecStart=/usr/bin/node --max_old_space_size=1600 update-users.js
+ExecStart=/usr/bin/node update-users.js
 
-User=ubuntu
-Group=ubuntu
+User=james
+Group=james
 
 Restart=always
 
 [Install]
 WantedBy=multi-user.target
-

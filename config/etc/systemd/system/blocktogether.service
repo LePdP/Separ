@@ -1,7 +1,7 @@
 [Service]
-WorkingDirectory=/etc/blocktogether/
+WorkingDirectory=/data/blocktogether/
 Environment="NODE_ENV=production"
-ExecStart=/usr/bin/node actions.js
+ExecStart=/usr/bin/node blocktogether.js --port 3000
 
 User=james
 Group=james

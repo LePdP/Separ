@@ -1,10 +1,10 @@
-/data/blocktogether/shared/log/*.log {
+/etc/blocktogether/logs/*.log {
 	daily
 	missingok
-	rotate 30
+	rotate 5
 	compress
 	delaycompress
-	create 0644 ubuntu ubuntu
+	create 0644 james james
 	sharedscripts
 	postrotate
 		# When stream.js forks, it winds up being nodejs instead of node.
