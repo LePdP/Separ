@@ -72,12 +72,8 @@ function findAndUpdateBlocks() {
       var batch = batches[0];
       logger.info('User', user.uid, 'has updated blocks from',
         timeago(new Date(batch.createdAt)));
-      if ((new Date() - new Date(batch.createdAt)) > ONE_DAY_IN_MILLIS) {
-        stats.updateRequests.labels('self').inc()
-        return updateBlocks(user);
-      } else {
-        return Q.resolve(null);
-      }
+      stats.updateRequests.labels('self').inc()
+      return updateBlocks(user);
     } else {
       logger.warn('User', user.uid, 'has no updated blocks ever.');
       return updateBlocks(user);
