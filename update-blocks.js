@@ -298,6 +298,7 @@ function finalizeBlockBatch(blockBatch) {
  */
 function addIdsToTwitterUsers(idList) {
   var chunkSize = 100;
+  logger.info('Adding IDs to TwitterUsers - ',idList.length);
   return TwitterUser.bulkCreate(idList.slice(0, chunkSize).map(function(id) {
     return {uid: id};
   }), {
