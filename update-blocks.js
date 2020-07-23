@@ -45,7 +45,7 @@ function findAndUpdateBlocks() {
   }).then(function(user) {
     // Gracefully exit function if no BtUser matches criteria above.
     if (user === null) {
-      logger.info('no user needs update')
+      //logger.info('no user needs update')
       return Q.reject(NO_UPDATE_NEEDED);
     } else {
       // HACK: mark the user as updated. This allows us to iterate through the
@@ -80,7 +80,7 @@ function findAndUpdateBlocks() {
     }
   }).catch(function(err) {
     if (err === NO_UPDATE_NEEDED) {
-      logger.info(err.message);
+      //logger.info(err.message);
     } else {
       logger.error(err);
     }
@@ -590,7 +590,6 @@ module.exports = {
 
 async function processEternally() {
   while (!shuttingDown) {
-    logger.info('tick');
     findAndUpdateBlocks();
     await Q.delay(1000);
   }
