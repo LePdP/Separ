@@ -40,7 +40,7 @@ function findAndUpdateBlocks() {
   }
   return BtUser.findOne({
     where: sequelize.literal(
-      "(updatedAt < DATE_SUB(NOW(), INTERVAL 6 HOURS) OR updatedAt IS NULL) AND deactivatedAt IS NULL AND NOT paused AND uid IN (SELECT DISTINCT(author_uid) FROM Subscriptions)"),
+      "(updatedAt < DATE_SUB(NOW(), INTERVAL 6 HOUR) OR updatedAt IS NULL) AND deactivatedAt IS NULL AND NOT paused AND uid IN (SELECT DISTINCT(author_uid) FROM Subscriptions)"),
     order: [['updatedAt', 'ASC']]
   }).then(function(user) {
     // Gracefully exit function if no BtUser matches criteria above.
