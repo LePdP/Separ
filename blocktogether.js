@@ -1052,7 +1052,7 @@ function showBlocks(req, res, next, btUser, ownBlocks, templateFilename) {
 
   // For pagination:
   var currentPage = parseInt(req.query.page, 10) || 1,
-      perPage = 500;
+      perPage = 5000;
   if (currentPage < 1) {
     currentPage = 1;
   }

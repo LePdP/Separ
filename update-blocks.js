@@ -168,7 +168,7 @@ async function fetchAndStoreBlocks(user) {
   // Total running count of blocks fetched.
   var size = 0;
   var nextCursor = '-1';
-  for (var i = 0; i < 50; i++) {
+  for (var i = 0; i < 55; i++) {
     try {
       var results = await Q.ninvoke(twitter,
         'blocks', 'ids', {

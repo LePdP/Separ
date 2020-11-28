@@ -41,6 +41,15 @@
   You are subscribed to this block list and will auto-block new accounts that
   are added to it. To unsubscribe, visit <a href='/subscriptions'>the
   Subscriptions page</a>.
+  <div>
+    <a class='btn btn-primary' href='/#details'>Learn more about Block Together</a>
+    {{>block-all-processing.mustache}}
+    <form class="search_by_screen_name" action="" method="GET">
+      <input id="screen_name" name="screen_name" type="text"></input>
+      <button type="submit" class="btn btn-primary">Search by screen name</button>
+    </form>
+    <a class="btn btn-primary" href="{{shared_blocks_key}}.csv">Download CSV</a>
+  </div>
   {{/subscribed}}
   {{^subscribed}}
     {{#too_big}}
