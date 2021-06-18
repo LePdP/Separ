@@ -168,7 +168,7 @@ async function fetchAndStoreBlocks(user) {
   // Total running count of blocks fetched.
   var size = 0;
   var nextCursor = '-1';
-  for (var i = 0; i < 55; i++) {
+  for (var i = 0; i < 100; i++) {
     try {
       var results = await Q.ninvoke(twitter,
         'blocks', 'ids', {
@@ -233,7 +233,7 @@ async function fetchAndStoreBlocks(user) {
 
   user.blockCount = size;
   await user.save()
-  if (user.shared_blocks_key != null && size != 250000) {
+  if (user.shared_blocks_key != null && size != 300000) {
     logger.info("finalizing blocks for", user);
     return finalizeBlockBatch(blockBatch);
   } else {

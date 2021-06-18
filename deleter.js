@@ -61,7 +61,7 @@ function deleteOneOldUser(user) {
 async function processEternally() {
   while (true) {
     await findAndDeleteOneOldUser();
-    await Q.delay(60*60*1000); // Does this need to run more than once per hour - JB?
+    await Q.delay(60);
   }
 }
 
@@ -77,7 +77,7 @@ async function cleanDuplicateAndExternalActions() {
          replacements: [offset, offset+limit],
          type: sequelize.QueryTypes.DELETE
        });
-      await Q.delay(1000);
+      await Q.delay(60*60*1000); // Does this need to run more than once per hour - JB?
     }
     logger.info("restarting cleanDuplicateAndExternalActions loop");
     await Q.delay(60*60*1000); // Does this need to run more than once per hour - JB?
@@ -90,7 +90,7 @@ async function cleanExcessActions() {
     let btUsers = await BtUser.findAll();
     for (let i = 0; i < btUsers.length; i++) {
       let user = btUsers[i];
-      if (user.blockCount >= 250000) {
+      if (user.blockCount >= 300000) {
         logger.info('trimming old actions for', user);
         await sequelize.query('DELETE FROM Actions WHERE typeNum = 1 AND source_uid = ? AND updatedAt < DATE_SUB(NOW(), INTERVAL 30 DAY) LIMIT 10000;',
           {

@@ -29,7 +29,7 @@ var config = setup.config,
     Subscription = setup.Subscription;
 
 // Maximum size of a block list that can be subscribed to.
-const maxSubscribeSize = 250000;
+const maxSubscribeSize = 300000;
 
 // Look for templates here
 mu.root = __dirname + '/templates';
@@ -195,7 +195,7 @@ app.post('/*', function(req, res, next) {
   if (typeof req.session.csrf === "undefined") {
     return next(new HttpError(403, 'Session unavailable. Please reload and try again.'));
   }
-  // CSRF not working, so removed for now ... Who would want to spoof requests to a lowly block bot anyway! 
+  // CSRF not working, so removed for now ... Who would want to spoof requests to a lowly block bot anyway!
   return next();
 
 });
