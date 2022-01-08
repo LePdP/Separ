@@ -844,7 +844,7 @@ app.post('/do-actions.json',
     var type = types[req.body.type];
     if (req.body.list &&
         req.body.list.length &&
-        req.body.list.length <= 5000 &&
+        req.body.list.length <= 4000 &&
         type) {
       actions.queueActions(
         req.user.uid, req.body.list, type,
@@ -1049,7 +1049,7 @@ function showBlocks(req, res, next, btUser, ownBlocks, templateFilename) {
 
   // For pagination:
   var currentPage = parseInt(req.query.page, 10) || 1,
-      perPage = 5000;
+      perPage = 4000;
   if (currentPage < 1) {
     currentPage = 1;
   }
