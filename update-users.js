@@ -205,7 +205,7 @@ function updateUsersChunk(uids, usersMap) {
   },
   credential.access_token, credential.access_token_secret
   ).spread(function(response, httpResponse) {
-    logger.debug('Got /users/lookup response size', response.length,
+    logger.info('Got /users/lookup response size', response.length,
       'for', uids.length, 'uids');
 
     // When a user is suspended, deactivated, or deleted, Twitter will simply not
