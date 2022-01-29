@@ -135,7 +135,7 @@ function deactivateTwitterUser(uid) {
         return Q.reject('No user found for uid ' + uid);
       }
     }).then(function(twitterUser) {
-      logger.debug('Deactivated user', twitterUser.screen_name, uid);
+      logger.info('Deactivated user', twitterUser.screen_name, uid);
       return twitterUser;
     }).catch(function(err) {
       logger.error(err);
