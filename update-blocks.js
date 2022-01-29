@@ -233,7 +233,7 @@ async function fetchAndStoreBlocks(user) {
 
   user.blockCount = size;
   await user.save()
-  if (user.shared_blocks_key != null && size != 300000) {
+  if (user.shared_blocks_key != null) {
     logger.info("finalizing blocks for", user);
     return finalizeBlockBatch(blockBatch);
   } else {
@@ -262,7 +262,7 @@ function finalizeBlockBatch(blockBatch) {
   // likely to be too expensive. Note: this shouldn't happen because we will
   // only fetch 50 * 5000 = 250k blocks.
   var diffPromise;
-  if (blockBatch.size < 300000) {
+  if (blockBatch.size < 30000) {
     diffPromise = diffBatchWithPrevious(blockBatch);
   } else {
     diffPromise = Promise.resolve()
