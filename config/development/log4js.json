@@ -98,14 +98,14 @@
     }
   }, {
     "type": "logLevelFilter",
-    "level": "TRACE",
+    "level": "INFO",
     "category": "deleter",
     "appender": {
       "type": "console"
     }
   }, {
     "type": "logLevelFilter",
-    "level": "TRACE",
+    "level": "INFO",
     "category": "deleter",
     "appender": {
       "type": "file",

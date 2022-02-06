@@ -98,7 +98,7 @@
     }
   }, {
     "type": "logLevelFilter",
-    "level": "TRACE",
+    "level": "INFO",
     "category": "deleter",
     "appender": {
       "type": "console"
