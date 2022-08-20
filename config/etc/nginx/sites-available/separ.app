@@ -13,7 +13,7 @@ server {
         # Certbot adds all the required SSL configuration to this file
         listen 80 default_server;
         listen [::]:80 default_server ipv6only=on;
-        server_name theblockbot.com;
+        server_name separ.app;
 
         access_log /var/log/nginx/access.log blockbot;
 
